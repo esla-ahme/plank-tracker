@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Graph from './components/Graph';
+import SideBar from './components/SideBar';
 
 function App() {
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+    if (localStorage.getItem('plank-track-data') !== undefined) {
+      const oldData = JSON.parse(localStorage.getItem('plank-track-data'))
+      setData(oldData)
+    }
+
+  }, [])
+  useEffect(() => {
+    localStorage.setItem('plank-track-data', JSON.stringify(data))
+
+  }, [data])
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar data={data} addData={setData} />
+
+      <Graph data={data} />
     </div>
   );
 }
