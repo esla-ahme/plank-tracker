@@ -1,10 +1,10 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-
+//51 62 65 80 68 85 92
 const columns = [
-  { field: 'day', headerName: 'Day', width: '80 ' },
+  { field: 'day', headerName: 'Day', width: '60 ' },
 
-  { field: 'time', headerName: 'Time (s)', type: 'number', width: '150' }
+  { field: 'time', headerName: 'Time (s)', type: 'number', width: '120' }
 ];
 
 
